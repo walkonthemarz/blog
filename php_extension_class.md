@@ -8,9 +8,9 @@ cd ./ext/
 2.更改config.m4，去掉以下三行的dnl注释：   
 
 ```
-PHP_ARG_WITH(Person, for Person support,
+PHP_ARG_WITH(kfc, for kfc support,
 Make sure that the comment is aligned:
-[  --with-kfc             Include Person support])
+[  --with-kfc             Include kfc support])
 ```
 3.修改php_kfc.h,在末尾添加kfc类的方法声明：   
 
@@ -21,4 +21,19 @@ PHP_METHOD(kfc,buy);//析构方法
 PHP_METHOD(kfc,eat);//eat方法
 PHP_METHOD(kfc,drink);//drink方法
 ```
-4.
+4.编辑kfc.c,扩展的主要实现都在这个文件里面：
+* 首先在kfc.c头部创建一个全局指针 zend_class_entry *kfb_ce;  
+```
+zend_class_entry *kfb_ce;
+```
+* 之后修改const zend_function_entry kfc_functions[]函数，这个函数主要是注册kfc类的相关成员方法，如果你写的不是类，是一般函数的话，也是在这里进行注册  
+```
+const zend_function_entry kfc_functions[] = { 
+    PHP_ME(kfc, __construct, NULL, ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+    PHP_ME(kfc, __destruct,  NULL, ZEND_ACC_PUBLIC|ZEND_ACC_DTOR)
+    PHP_ME(kfc, buy,     NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(kfc, eat, NULL, ZEND_ACC_PUBLIC)
+    PHP_ME(kfc, drink, NULL, ZEND_ACC_PUBLIC)
+    PHP_FE_END
+};
+```
