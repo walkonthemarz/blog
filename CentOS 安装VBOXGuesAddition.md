@@ -9,7 +9,7 @@
 
 * Reboot CentOS
 
-* 到http://download.virtualbox.org/virtualbox下载对应的VBoxGuestAdditions_5.x.xx.iso 镜像
+* 到[http://download.virtualbox.org/virtualbox](http://download.virtualbox.org/virtualbox) 下载对应的VBoxGuestAdditions_5.x.xx.iso 镜像
 
 * vbox设置里面，存储里面挂载光驱，选择下载的iso文件
 
@@ -21,7 +21,7 @@
   sudo bash /media/cdrom/VBoxLinuxAdditions.run
   ```
 
-* 安装成功后，vbox设置里面，选择共享目录，添加共享目录，设置共享文件夹名称（假设为 **slice **），选择**固定分配**，**只读分配**
+* 安装成功后，vbox设置里面，选择共享目录，添加共享目录，设置共享文件夹名称（假设为 **slice**），选择**固定分配**，**只读分配**
 
 * 编辑/etc/fstab文件，添加开机自动挂载，将下面一行添加到文件末尾：
 
