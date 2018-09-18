@@ -5,6 +5,7 @@
 ```
 'AddAutoRunProgram.vbs
 
+'下面一段用于以管理员身份运行当前脚本
 Set WshShell = WScript.CreateObject("WScript.Shell")
 If WScript.Arguments.Length = 0 Then
   Set ObjShell = CreateObject("Shell.Application")
