@@ -13,7 +13,7 @@ If WScript.Arguments.Length = 0 Then
 End if
 
 
-'假设该程序在c:\rimdc文件夹中，文件名为start.vbs
+'假设该程序在c:\mydir文件夹中，文件名为start.vbs
 
 Const HKEY_LOCAL_MACHINE = &H80000002
 
@@ -23,9 +23,9 @@ Set objRegistry = GetObject("winmgmts:\\" & strComputer & "\root\default:StdRegP
 
 strKeyPath = "Software\Microsoft\Windows\CurrentVersion\Run"
 
-strValueName = "pathology"
+strValueName = "mykeyname"
 
-strValue = "C:\rimdc\start.vbs"
+strValue = "C:\mydir\start.vbs"
 
 objRegistry.SetStringValue HKEY_LOCAL_MACHINE, strKeyPath, strValueName, strValue
 
